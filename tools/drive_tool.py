@@ -4,7 +4,7 @@ Google Drive Tool - Downloads PDF forms from Google Drive
 import os
 import io
 from typing import List, Dict, Any
-from google.adk.tools import Tool
+from google.adk.tools import FunctionTool
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -137,9 +137,6 @@ def drive_download_tool(
 
 
 # Create ADK Tool wrapper
-drive_download_adk_tool = Tool(
-    name="drive_download",
-    description="Downloads PDF forms from a Google Drive folder for a specific state. Use this to get blank benefit application forms.",
-    func=drive_download_tool
-)
+# FunctionTool automatically extracts name and description from the function docstring and signature
+drive_download_adk_tool = FunctionTool(drive_download_tool)
 

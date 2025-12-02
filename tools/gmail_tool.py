@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from typing import Dict, Any
-from google.adk.tools import Tool
+from google.adk.tools import FunctionTool
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -128,9 +128,6 @@ def gmail_draft_tool(
 
 
 # Create ADK Tool wrapper
-gmail_draft_adk_tool = Tool(
-    name="gmail_draft",
-    description="Creates a Gmail draft email with optional attachment. Use this to send empathetic emails to laid-off workers with their benefit forms attached.",
-    func=gmail_draft_tool
-)
+# FunctionTool automatically extracts name and description from the function docstring and signature
+gmail_draft_adk_tool = FunctionTool(gmail_draft_tool)
 

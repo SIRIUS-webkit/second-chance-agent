@@ -4,7 +4,7 @@ Form Filler Tool - Fills PDF forms with extracted information
 import os
 import re
 from typing import Dict, Any, Optional
-from google.adk.tools import Tool
+from google.adk.tools import FunctionTool
 from pypdf import PdfReader, PdfWriter
 import json
 
@@ -174,9 +174,6 @@ def form_filler_tool(
 
 
 # Create ADK Tool wrapper
-form_filler_adk_tool = Tool(
-    name="form_filler",
-    description="Fills PDF forms with applicant information (name, address, employer, wage, etc.). Use this to populate benefit application forms.",
-    func=form_filler_tool
-)
+# FunctionTool automatically extracts name and description from the function docstring and signature
+form_filler_adk_tool = FunctionTool(form_filler_tool)
 

@@ -3,7 +3,7 @@ Eligibility Engine Tool - Determines benefit eligibility based on state and post
 """
 import os
 from typing import Dict, List, Any
-from google.adk.tools import Tool
+from google.adk.tools import FunctionTool
 
 
 def eligibility_engine_tool(state: str, post_text: str) -> Dict[str, Any]:
@@ -100,9 +100,6 @@ def eligibility_engine_tool(state: str, post_text: str) -> Dict[str, Any]:
 
 
 # Create ADK Tool wrapper
-eligibility_engine_adk_tool = Tool(
-    name="eligibility_engine",
-    description="Determines which benefit programs (UI, SNAP, ACA, RETRAINING) a laid-off worker qualifies for based on their state and post content. Returns programs list and estimated total benefit amount.",
-    func=eligibility_engine_tool
-)
+# FunctionTool automatically extracts name and description from the function docstring and signature
+eligibility_engine_adk_tool = FunctionTool(eligibility_engine_tool)
 

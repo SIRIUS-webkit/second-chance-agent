@@ -33,7 +33,8 @@ Every day thousands of Americans announce lay-offs on LinkedIn. Most never apply
 
 - Runs daily at 08:00 UTC
 - Reads `shared_state.jsonl` and calculates statistics
-- Posts anonymized stats to Twitter/X via API v2
+- Posts anonymized stats to Twitter/X and/or LinkedIn (configurable)
+- **Platform Choice**: Twitter is easier (free tier, quick setup), LinkedIn reaches target audience but requires Partner Program approval
 
 ## Quick Start
 
